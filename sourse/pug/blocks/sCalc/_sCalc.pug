@@ -1,0 +1,98 @@
+mixin btn-radio(t, n)
+	+b.LABEL.btn-radio
+		input(type="radio" name= n)&attributes(attributes)
+		+e.btn= t
+mixin radio(t, n)
+	+b.LABEL.radio-custom
+		input(type="radio" name= n)&attributes(attributes)
+		+e.text= t
+mixin sCalc(data)
+	// start sCalc
+	+b.sCalc.section#sCalc&attributes(attributes)
+		.container
+
+			+e.head
+				+e.step.active Шаг 1
+					+icon("arrow-right")
+				+e.step Шаг 2
+			+e.body
+
+				mixin group(t)
+					+e.col.col-lg-6 
+						+e.title= t
+						block 
+				.row
+					+group('Вид недвижимости')
+						.row
+							.col-auto
+								+btn-radio('Новостройка', 'typ')(checked)
+							.col-auto
+								+btn-radio('Вторичка', 'typ')
+							.col-auto
+								+btn-radio('Коттедж', 'typ')
+							.col-auto
+								+btn-radio('Офис', 'typ')
+					+group('Тип ремонта')
+						.row
+							.col-sm-auto
+								+radio('Косметический', 'rem')(checked)
+							.col-sm-auto
+								+radio('Капитальный', 'rem')
+							.col-sm-auto
+								+radio('Элитный', 'rem')
+							.col-sm-auto
+								+radio('Элитный', 'rem')
+
+					+group('Количество комнат')
+						.row
+							.col-auto
+								+btn-radio('1', 'count')(checked)
+							.col-auto
+								+btn-radio('2', 'count')
+							.col-auto
+								+btn-radio('3', 'count')
+							.col-auto
+								+btn-radio('4', 'count')
+							.col-auto
+								+btn-radio('5', 'count')
+							.col-auto
+								+btn-radio('Студия', 'count')
+					+group('Площадь объека')
+						+e.row.row.align-items-center
+							.col-lg
+								+b.range-wrap 
+									+e.btn--minus 
+									+e.btn--plus 
+									input(type="text" data-min="0" data-from="40" data-max="100").custom-range-js
+							.col-auto
+								button.btn.btn-primar.btn--next Далее
+	// end sCalc
+
+	
+mixin sCalc2(data)
+	// start sCalc
+	+b.sCalc.section#sCalc&attributes(attributes)
+		.container
+
+			+e.head
+				+e.step Шаг 1
+					+icon("arrow-right")
+				+e.step.active Шаг 2
+			+e.body
+				+e.title.fw-400 Стоимость ремонта с работой
+				+e.form-row.row
+					.col-sm-auto
+						+e.total 200 000 ₽
+					+e.col-input.col-xs
+						+input('Имя')
+					+e.col-input.col-xs
+						+input('Телефон','tel')
+					+e.col-btn.col-sm-auto
+						button.btn.btn-primar.btn--next Вызвать замерщика
+						+e.policy Нажимая на кнопку, Вы соглашаетесь на #[a(href="#") обработку персональных данных].
+				+e.more 
+					span Мы подобрали для вас примеры наших ремонтов по однокомнатным квартирам. 
+					a(href="#") Подробнее 
+
+	// end sCalc
+
